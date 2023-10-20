@@ -15,12 +15,8 @@ $FileHash = Read-Host -Prompt 'Choosen hash'
 
 Get-FileHash $FileLocation -Algorithm $FileHash | Format-List
 
-
 $ExtractedHash = Read-Host -Prompt 'Extracted hash'
 Write-Host ""
 $GivenHash = Read-Host -Prompt 'Given hash'
 Write-Host ""
 $ExtractedHash -eq $GivenHash
-
-
-
