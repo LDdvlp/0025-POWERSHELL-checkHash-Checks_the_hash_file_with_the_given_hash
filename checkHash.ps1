@@ -1,9 +1,12 @@
 ﻿Clear-Host
 
+<# ***  1. LOCATE FILE WITH HASH *** ---------------------------------------------------- #>
+
 Write-Host ""
 $FileName = $(Write-Host "File name :" -ForegroundColor Red; Read-Host)
 $FileLocation = "C:\$env:HOMEPATH\Downloads\$FileName"
 
+<# ***  2. SHOW MENU *** ---------------------------------------------------------------- #>
 
 Function Show-Hash-Menu {
     param (
@@ -22,6 +25,9 @@ Function Show-Hash-Menu {
     Write-Host "5. MD5" -ForegroundColor Cyan
     Write-Host "6. Exit" -ForegroundColor Cyan
 }
+
+<# ***  3. PROCESS MENU *** ------------------------------------------------------------- #>
+
 Function Select-Hash-Menu {
     param (
         [string]$FileHash
@@ -48,13 +54,23 @@ While ($Continue) {
     }
 }
 
+<# ***  4. EXTRACT HASH FROM FILE *** --------------------------------------------------- #>
+
 Get-FileHash $FileLocation -Algorithm $SelectedHashFile | Format-List
+
+<# ***  5. COPY EXTRACTED HASH *** ------------------------------------------------------ #>
 
 $ExtractedHash = $(Write-Host "Extracted hash :" -ForegroundColor Yellow; Read-Host)
 Write-Host ""
+
+<# ***  5. COPY GIVEN HASH *** ---------------------------------------------------------- #>
+
 $GivenHash = $(Write-Host "Given hash :" -ForegroundColor Yellow; Read-Host)
 Write-Host ""
+
+<# ***  6. COMPARE EXTRACTED AND GIVEN HASHES *** --------------------------------------- #>
+
 Write-Host "Veracity :" -ForegroundColor Blue
 $ExtractedHash -eq $GivenHash
 Write-Host ""
-Read-Host "Appuyez sur ENTREE pour sortir..."
+Read-Host "STRIKE ENTER KEY TO EXIT, BYE ;-)"
