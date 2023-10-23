@@ -63,14 +63,17 @@ Get-FileHash $FileLocation -Algorithm $SelectedHashFile | Format-List
 $ExtractedHash = $(Write-Host "Extracted hash :" -ForegroundColor Yellow; Read-Host)
 Write-Host ""
 
-<# ***  5. COPY GIVEN HASH *** ---------------------------------------------------------- #>
+<# ***  6. COPY GIVEN HASH *** ---------------------------------------------------------- #>
 
 $GivenHash = $(Write-Host "Given hash :" -ForegroundColor Yellow; Read-Host)
 Write-Host ""
 
-<# ***  6. COMPARE EXTRACTED AND GIVEN HASHES *** --------------------------------------- #>
+<# ***  7. COMPARE EXTRACTED AND GIVEN HASHES *** --------------------------------------- #>
 
 Write-Host "Veracity :" -ForegroundColor Blue
 $ExtractedHash -eq $GivenHash
 Write-Host ""
+
+<# ***  8. QUIT APPLICATION *** --------------------------------------------------------- #>
+
 Read-Host "STRIKE ENTER KEY TO EXIT, BYE ;-)"
